@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package services.awesome.v1;
+
+import "messages/v1/report.proto";
+
+enum Privacy {
+  PRIVACY_UNSPECIFIED = 0;
+  PRIVACY_NONE = 1;
+  PRIVACY_HIGH = 2;
+}
+
+message FindReportByPetNameRequest {
+  string pet_name = 1;
+}
+message FindReportByPetNameResponse {
+  messages.v1.Report report = 1;
+  Privacy privacy = 2;
+}
+
+service AwesomeService {
+
+  rpc FindReportByPetName(FindReportByPetNameRequest) returns (FindReportByPetNameResponse) {
+    option (google.api.http) = {
+      get : "/v1/awesomes/{pet _name}"
+    };
+  };
+}
