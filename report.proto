@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package report;
+
+import "google/protobuf/timestamp.proto";
+import "access_tier.proto";
+import "pet.proto";
+
+option go_package = "github.com/abitofhelp/abcdapis/report;report";
+
+message Report {
+  access_tier.AccessTier access_tier = 1;
+  bool archived = 2;
+  google.protobuf.Timestamp generated_utc = 3;
+  pet.Pet pet = 4;
+  string title = 5;
+  string uri = 6;
+}

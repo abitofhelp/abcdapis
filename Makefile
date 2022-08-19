@@ -1,35 +1,10 @@
-PROJECT_DIR=$(GOPATH)/src/github.com/abitofhelp/abcdapis
-PROTO_DIR=$(PROJECT_DIR)/abcdapis
-BUF_DIR=$(PROTO_DIR)
+.PHONY: protos, build
+MODULE="github.com/abitofhelp/abcdapis"
 
-bufbuild:
-	@buf build
-.PHONY:bufbuild
+protos:
+	protoc --proto_path=. --go_out=. --go_opt=module=${MODULE} --go-grpc_out=. --go-grpc_opt=module=${MODULE} ./*.proto
 
-#bufclean:
-#	@rm -rf "$(PROJECT_DIR)/grpc"
-#.PHONY:bufclean
+build:
+	go build ./...
 
-#bufgen: bufclean bufbuild #buflint
-#	@buf generate
-#.PHONY:bufgen
-
-buflint:
-	@buf lint
-.PHONY:buflint
-
-buflist:
-	@buf ls-files
-.PHONY:buflist
-
-bufpub: bufupdate bufpush
-.PHONY:bufpub
-
-bufpush:
-	@buf push "$(PROTO_DIR)"
-.PHONY:bufpush
-
-bufupdate:
-	@buf mod update "$(PROTO_DIR)"
-.PHONY:bufupdate
 

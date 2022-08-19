@@ -1,6 +1,8 @@
 syntax = "proto3";
 
-package enums.v1;
+package access_tier;
+
+option go_package = "github.com/abitofhelp/abcdapis/access_tier;access_tier";
 
 enum AccessTier {
   ACCESS_TIER_UNSPECIFIED = 0;

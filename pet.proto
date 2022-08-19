@@ -1,8 +1,10 @@
 syntax = "proto3";
 
-package messages.v1;
+package pet;
 
 import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/abitofhelp/abcdapis/pet;pet";
 
 message Pet {
   google.protobuf.Timestamp birthday_utc = 1;
