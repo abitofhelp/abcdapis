@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package services.awesome.v1;
 
+import "google/api/annotations.proto";
 import "messages/v1/report.proto";
 
 enum Privacy {
